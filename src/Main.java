@@ -8,6 +8,7 @@ public class Main {
         Car carHyundai = new Car("", "Avante", 1.6, "оранжевый", 2016, "Южная Корея");
 
 
+
         System.out.println(carLada);
         System.out.println(carAudi);
         System.out.println(carBMW);
