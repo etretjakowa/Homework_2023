@@ -37,6 +37,7 @@ public class Car {
         this.color = defaultColor;
     }
 
+
     private boolean isCountryEmpty(String country) {
         return country == null || country.isEmpty();
     }
