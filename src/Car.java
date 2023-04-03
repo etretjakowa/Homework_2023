@@ -21,11 +21,13 @@ public class Car {
     String transmissionBox;//
     String regNumber;//
     boolean summerTires;
+    private Key key;
+
 
     public Car(String brand, String model, int year, String country, int capacity, String bodyType,
-               double engineVolume, String color, String transmissionBox, String regNumber, boolean summerTires) {
-        this.brand = brand;
-        this.model = model;
+               double engineVolume, String color, String transmissionBox, String regNumber, boolean summerTires, Key key) {
+        this.brand = (isBrandEmpty(brand) ? defaultBrand : brand);
+        this.model = (isModelEmpty(model) ? defaultModel : model);
         this.capacity = (isCapacityNull(capacity) ? defaultCapacity : capacity);
         this.bodyType = (isBodyTypeEmpty(bodyType) ? defaultBodyType : bodyType);
         this.transmissionBox = (isTransmissionBoxEmpty(transmissionBox) ? defaultTransmissionBox : transmissionBox);
@@ -35,116 +37,16 @@ public class Car {
         this.engineVolume = (isEngineVolumeNull(engineVolume) ? defaultEngineVolume : engineVolume);
         this.color = (isColorEmpty(color) ? defaultColor : color);
         this.regNumber = (isRegNumberEmpty(regNumber) ? defaultRegNumber : regNumber);
-
+        setKey(key);
     }
 
-
-//    public Car(boolean summerTires) {
-//        this.brand = defaultBrand;
-//        this.model = defaultModel;
-//        this.capacity = defaultCapacity;
-//        this.bodyType = defaultBodyType;
-//        this.transmissionBox = defaultTransmissionBox;
-//        this.summerTires = summerTires;
-//        this.year = defaultYear;
-//        this.country = defaultCountry;
-//        this.engineVolume = defaultEngineVolume;
-//        this.color = defaultColor;
-//        this.regNumber = defaultRegNumber;
-//
-//    }
-
-
-    public Car(int year, String country, int capacity, String bodyType,
-               double engineVolume, String color,
-               boolean summerTires) {
-        this.brand = defaultBrand;
-        this.model = defaultModel;
-        this.year = year;
-        this.country = country;
-        this.capacity = capacity;
-        this.bodyType = bodyType;
-        this.engineVolume = engineVolume;
-        this.color = color;
-        this.transmissionBox = defaultTransmissionBox;
-        this.regNumber = defaultRegNumber;
-        this.summerTires = summerTires;
+    private boolean isBrandEmpty(String brand) {
+        return brand == null || brand.isEmpty();
     }
 
-    public Car(String brand, String model, int year, int capacity, String bodyType,
-               double engineVolume, String color, String transmissionBox, String regNumber, boolean summerTires) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.country = defaultCountry;
-        this.capacity = capacity;
-        this.bodyType = bodyType;
-        this.engineVolume = engineVolume;
-        this.color = color;
-        this.transmissionBox = transmissionBox;
-        this.regNumber = regNumber;
-        this.summerTires = summerTires;
+    private boolean isModelEmpty(String model) {
+        return model == null || model.isEmpty();
     }
-
-    public Car(String brand, String model, int year, String country, int capacity, String bodyType,
-               double engineVolume, String transmissionBox, String regNumber, boolean summerTires) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.country = country;
-        this.capacity = capacity;
-        this.bodyType = bodyType;
-        this.engineVolume = engineVolume;
-        this.color = defaultColor;
-        this.transmissionBox = transmissionBox;
-        this.regNumber = regNumber;
-        this.summerTires = summerTires;
-    }
-
-    public Car(String brand, String model, int year, String country, String bodyType,
-               double engineVolume, String color, String transmissionBox, String regNumber, boolean summerTires) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.country = country;
-        this.capacity = defaultCapacity;
-        this.bodyType = bodyType;
-        this.engineVolume = engineVolume;
-        this.color = color;
-        this.transmissionBox = transmissionBox;
-        this.regNumber = regNumber;
-        this.summerTires = summerTires;
-    }
-
-    public Car(String brand, String model, int year, String country, int capacity,
-               double engineVolume, String color, String transmissionBox, String regNumber, boolean summerTires) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.country = country;
-        this.capacity = capacity;
-        this.bodyType = defaultBodyType;
-        this.engineVolume = engineVolume;
-        this.color = color;
-        this.transmissionBox = transmissionBox;
-        this.regNumber = regNumber;
-        this.summerTires = summerTires;
-    }
-//    public Car(String brand, String model, int year, String country, int capacity, String bodyType,
-//               double engineVolume, String color, String regNumber, boolean summerTires) {
-//        this.brand = brand;
-//        this.model = model;
-//        this.year = year;
-//        this.country = country;
-//        this.capacity = capacity;
-//        this.bodyType = bodyType;
-//        this.engineVolume = engineVolume;
-//        this.color = color;
-//        this.transmissionBox = defaultTransmissionBox;
-//        this.regNumber = regNumber;
-//        this.summerTires = summerTires;
-//    }
-
 
     private boolean isCountryEmpty(String country) {
         return country == null || country.isEmpty();
@@ -251,15 +153,35 @@ public class Car {
         }
     }
 
-    private class Key {
+    public void setKey(Key key) {
+        if (key == null) {
+            key = new Key(false, false);
+        }
+        this.key = key;
+    }
+
+    public static class Key {
+        private final boolean remoteEngineStart;
+        private final boolean keylessAccess;
+
         public Key(boolean remoteEngineStart, boolean keylessAccess) {
             this.remoteEngineStart = remoteEngineStart;
             this.keylessAccess = keylessAccess;
         }
 
-        private boolean remoteEngineStart;
-        private boolean keylessAccess;
+        public boolean isRemoteEngineStart() {
+            return remoteEngineStart;
+        }
 
+        public boolean isKeylessAccess() {
+            return keylessAccess;
+        }
+
+        @Override
+        public String toString() {
+            return (remoteEngineStart ? " удалённый запуск двигателя, " : " без удалённый запуск двигателя, ")
+                    + (keylessAccess ? "безключевой доступ" : "безключевой доступ отсутствует");
+        }
     }
 
 
@@ -274,7 +196,7 @@ public class Car {
                 ", Объем двигателя " + engineVolume +
                 ", Цвет " + color +
                 ", Коробка передач " + transmissionBox +
-                ", Регистрационный номер" + regNumber + "," +
-                (summerTires ? " летняя" : " зимняя") + " резина";
+                ", Регистрационный номер " + regNumber + "," +
+                (summerTires ? " летняя" : " зимняя") + " резина," + key;
     }
 }
