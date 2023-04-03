@@ -15,6 +15,7 @@ public class Car {
     private int year;
     private String country;
     private int capacity;//
+
     private String bodyType;//
     double engineVolume;
     String color;
