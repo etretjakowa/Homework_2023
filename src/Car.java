@@ -24,6 +24,7 @@ public class Car {
     private Key key;
 
 
+
     public Car(String brand, String model, int year, String country, int capacity, String bodyType,
                double engineVolume, String color, String transmissionBox, String regNumber, boolean summerTires, Key key) {
         this.brand = (isBrandEmpty(brand) ? defaultBrand : brand);
