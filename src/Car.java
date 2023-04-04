@@ -18,10 +18,10 @@ public class Car {
 
     private String bodyType;//
     double engineVolume;
-    String color;
-    String transmissionBox;//
-    String regNumber;//
-    boolean summerTires;
+    private String color;
+    private String transmissionBox;//
+    private String regNumber;//
+    private boolean summerTires;
     private Key key;
 
 
