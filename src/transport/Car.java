@@ -1,64 +1,32 @@
 package transport;
 
-public class Car {
-    private static String defaultCountry = "default";
-    private static String defaultModel = "default";
-    private static String defaultBrand = "default";
-    private static String defaultColor = "белый";
-
+public class Car extends Transport {
     private static String defaultRegNumber = "default";
     private static String defaultTransmissionBox = "default";
     private static String defaultBodyType = "default";
     private static double defaultEngineVolume = 1.5;
-    private static int defaultYear = 2000;
     private static int defaultCapacity = 5;
-    private String brand;
-    private String model;
-    private int year;
-    private String country;
     private int capacity;//
-
     private String bodyType;//
     double engineVolume;
-    private String color;
     private String transmissionBox;//
     private String regNumber;//
     private boolean summerTires;
     private Key key;
 
 
-
-    public Car(String brand, String model, int year, String country, int capacity, String bodyType,
-               double engineVolume, String color, String transmissionBox, String regNumber, boolean summerTires, Key key) {
-        this.brand = (isBrandEmpty(brand) ? defaultBrand : brand);
-        this.model = (isModelEmpty(model) ? defaultModel : model);
+    public Car(String brand, String model, String country, String color,int year, int maxSpeed, int capacity, String bodyType,
+               double engineVolume, String transmissionBox, String regNumber, boolean summerTires, Key key) {
+        super(brand, model, country,color, year, maxSpeed);
         this.capacity = (isCapacityNull(capacity) ? defaultCapacity : capacity);
         this.bodyType = (isBodyTypeEmpty(bodyType) ? defaultBodyType : bodyType);
         this.transmissionBox = (isTransmissionBoxEmpty(transmissionBox) ? defaultTransmissionBox : transmissionBox);
         this.summerTires = summerTires;
-        this.year = (isYearNull(year) ? defaultYear : year);
-        this.country = (isCountryEmpty(country) ? defaultCountry : country);
         this.engineVolume = (isEngineVolumeNull(engineVolume) ? defaultEngineVolume : engineVolume);
-        this.color = (isColorEmpty(color) ? defaultColor : color);
         this.regNumber = (isRegNumberEmpty(regNumber) ? defaultRegNumber : regNumber);
         setKey(key);
     }
 
-    private boolean isBrandEmpty(String brand) {
-        return brand == null || brand.isEmpty();
-    }
-
-    private boolean isModelEmpty(String model) {
-        return model == null || model.isEmpty();
-    }
-
-    private boolean isCountryEmpty(String country) {
-        return country == null || country.isEmpty();
-    }
-
-    private boolean isColorEmpty(String color) {
-        return color == null || color.isEmpty();
-    }
 
     private boolean isBodyTypeEmpty(String bodyType) {
         return bodyType == null || bodyType.isEmpty();
@@ -80,25 +48,6 @@ public class Car {
         return capacity <= 0;
     }
 
-    private boolean isYearNull(int year) {
-        return year >= 0;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
 
     public int getCapacity() {
         return capacity;
@@ -114,14 +63,6 @@ public class Car {
 
     public void setEngineVolume(double engineVolume) {
         this.engineVolume = engineVolume;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public String getTransmissionBox() {
@@ -191,14 +132,9 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Марка " + brand +
-                ", Модель " + model +
-                ", Год производства " + year +
-                ", Страна " + country +
-                ", Количество мест " + capacity +
+        return super.toString() + ", Количество мест " + capacity +
                 ", Тип кузова " + bodyType +
                 ", Объем двигателя " + engineVolume +
-                ", Цвет " + color +
                 ", Коробка передач " + transmissionBox +
                 ", Регистрационный номер " + regNumber + "," +
                 (summerTires ? " летняя" : " зимняя") + " резина," + key;
