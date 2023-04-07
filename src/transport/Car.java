@@ -1,3 +1,5 @@
+package transport;
+
 public class Car {
     private static String defaultCountry = "default";
     private static String defaultModel = "default";
