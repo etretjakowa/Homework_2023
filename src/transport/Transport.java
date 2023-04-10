@@ -17,6 +17,7 @@ public abstract class Transport<T extends Driver> implements Сompeting {
     private final String model;
     private double engineVolume;
     private T driver;
+
     public Transport(String brand, String model, double engineVolume, T driver) {
         this.brand = (isBrandEmpty(brand) ? defaultBrand : brand);
         this.model = (isModelEmpty(model) ? defaultModel : model);
@@ -79,6 +80,7 @@ public abstract class Transport<T extends Driver> implements Сompeting {
     public void setDriver(T driver) {
         this.driver = driver;
     }
+
     //    public int getYear() {
 //        return year;
 //    }
@@ -98,16 +100,19 @@ public abstract class Transport<T extends Driver> implements Сompeting {
 //    public void setMaxSpeed(int maxSpeed) {
 //        this.maxSpeed = maxSpeed;
 //    }
-public void printInfo(){
-    System.out.println("водитель"+driver.getName()+ "управляет автомобилем"+ getBrand()+" будет участвовать в заезде");
-}
+    public void printInfo() {
+        System.out.println("водитель № " + driver.getName() + " управляет автомобилем " + getBrand() + " и будет участвовать в заезде");
+    }
+
     public abstract void startMov();
+
     public abstract void finishMov();
+
     @Override
     public String toString() {
         return "Марка " + brand +
                 ", Модель " + model +
-                ", Объем двигателя" + engineVolume + driver;
+                ", Объем двигателя " + engineVolume + "," + driver;
 
     }
 }

@@ -39,14 +39,11 @@ public abstract class Driver {
     public abstract void startMove();
 
     public abstract void finishMov();
+
     public abstract void refuelTransport();
 
     @Override
     public String toString() {
-        return "Driver{" +
-                "name='" + name + '\'' +
-                ", hasDriverLicense=" + hasDriverLicense +
-                ", drivingExperience=" + drivingExperience +
-                '}';
+        return " водитель № "+name + ", водительский стаж " + drivingExperience;
     }
 }

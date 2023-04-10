@@ -2,9 +2,9 @@ package transport;
 
 public class Main {
     public static void main(String[] args) {
-        DriverB driverB1 = new DriverB("1B", true, 2);
+        DriverB driverB1 = new DriverB("1 категории B", true, 2);
         Car carLada = new Car("Lada", "Granta", 1.7, driverB1);
-
+        carLada.printInfo();
 //
 //
 //        Car carAudi = new Car("Audi", "A8 50 L TDI quattro", 1.5);
