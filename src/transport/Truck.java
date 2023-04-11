@@ -1,8 +1,59 @@
 package transport;
 
 public class Truck extends Transport<DriverC> {
-    public Truck(String brand, String model, double engineVolume, DriverC driver) {
+    private LoadCapacity truck;
+
+    public Truck(String brand, String model, double engineVolume, DriverC driver, LoadCapacity truck) {
         super(brand, model, engineVolume, driver);
+        this.truck = truck;
+    }
+
+    public LoadCapacity getTruck() {
+        return truck;
+    }
+
+   public enum LoadCapacity {
+        N1(0, 3.5),
+        N2(3.5, 12),
+        N3(12, 20);
+        private double min;
+        private double max;
+
+        LoadCapacity(double min, double max) {
+            this.min = min;
+            this.max = max;
+
+        }
+
+        public double getMin() {
+            return min;
+        }
+
+        public double getMax() {
+            return max;
+        }
+
+        public static LoadCapacity getValue(double value) {
+            for (LoadCapacity e : LoadCapacity.values()) {
+                if (value >= e.getMin() && value <= e.getMax()) {
+                    System.out.println(e);
+                    return e;
+                }
+            }
+            return null;
+        }
+
+        @Override
+        public String toString() {
+            return super.toString() +
+                    " от " + min +
+                    " до " + max + " тонн";
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +". Грузоподъемность: " + truck;
     }
 
     @Override
@@ -14,6 +65,15 @@ public class Truck extends Transport<DriverC> {
     public void finishMov() {
         System.out.println("Грузовик " + getBrand() + "закончил движение");
 
+    }
+
+    @Override
+    public Type getType() {
+        if (Type.TRUCK != Type.TRUCK) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+        System.out.println(Type.TRUCK);
+        return Type.TRUCK;
     }
 
     @Override
