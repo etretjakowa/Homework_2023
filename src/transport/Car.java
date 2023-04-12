@@ -15,10 +15,6 @@ public class Car extends Transport<DriverB> {
 
     @Override
     public Type getType() {
-        if (Type.CAR != Type.CAR) {
-            System.out.println("Данных по транспортному средству недостаточно");
-        }
-        System.out.println(Type.CAR);
         return Type.CAR;
     }
 

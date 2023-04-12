@@ -49,10 +49,6 @@ public class Bus extends Transport<DriverD> {
 
     @Override
     public Type getType() {
-        if (Type.BUS != Type.BUS) {
-            System.out.println("Данных по транспортному средству недостаточно");
-        }
-        System.out.println(Type.BUS);
         return Type.BUS;
     }
 

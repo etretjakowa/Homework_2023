@@ -12,7 +12,7 @@ public class Truck extends Transport<DriverC> {
         return truck;
     }
 
-   public enum LoadCapacity {
+    public enum LoadCapacity {
         N1(0, 3.5),
         N2(3.5, 12),
         N3(12, 20);
@@ -53,7 +53,7 @@ public class Truck extends Transport<DriverC> {
 
     @Override
     public String toString() {
-        return super.toString() +". Грузоподъемность: " + truck;
+        return super.toString() + ". Грузоподъемность: " + truck;
     }
 
     @Override
@@ -69,10 +69,6 @@ public class Truck extends Transport<DriverC> {
 
     @Override
     public Type getType() {
-        if (Type.TRUCK != Type.TRUCK) {
-            System.out.println("Данных по транспортному средству недостаточно");
-        }
-        System.out.println(Type.TRUCK);
         return Type.TRUCK;
     }
 
