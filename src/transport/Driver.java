@@ -44,6 +44,6 @@ public abstract class Driver {
 
     @Override
     public String toString() {
-        return " водитель № "+name + ", водительский стаж " + drivingExperience;
+        return " водитель №"+name + ", водительский стаж " + drivingExperience;
     }
 }
