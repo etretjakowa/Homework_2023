@@ -38,11 +38,19 @@ public class Bus extends Transport<DriverD> {
 
     @Override
     public void startMov() {
+        if (gasTankBar <= 0) {
+            throw new EmptyGasTankException(this);
+        }
+        if (oilTankBar <= 0) {
+            throw new NoOilException(this);
+        }
         System.out.println("Автобус " + getBrand() + "начал движение");
     }
 
     @Override
-    public void finishMov() {
+    public void finishMov(double oilLiters, double gasLiters) {
+        gasTankBar -= gasLiters;
+        oilTankBar -= oilLiters;
         System.out.println("Автобус " + getBrand() + "закончил движение");
 
     }
@@ -50,6 +58,15 @@ public class Bus extends Transport<DriverD> {
     @Override
     public Type getType() {
         return Type.BUS;
+    }
+
+    @Override
+    public void runDiagnostic() throws DiagnosticNotAllowedException {
+        double random = 10 * Math.random();
+        if (random < 1) {
+            throw new DiagnosticNotAllowedException();
+        }
+        System.out.println("Диагностика пройдена  " + getBrand() + getModel());
     }
 
     public enum ClassificationBus {
@@ -97,4 +114,5 @@ public class Bus extends Transport<DriverD> {
         return super.toString() +
                 ". Вместимость: " + classificationBus;
     }
+
 }

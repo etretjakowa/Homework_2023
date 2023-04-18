@@ -21,11 +21,20 @@ public class Car extends Transport<DriverB> {
 
     @Override
     public void startMov() {
-        System.out.println("Автомобиль " + getBrand() + "начал движение");
+        if (gasTankBar <= 0) {
+            throw new EmptyGasTankException(this);
+        }
+        if (oilTankBar <= 0) {
+            throw new NoOilException(this);
+        }
+        System.out.println("Автомобиль " + getBrand() + " начал движение");
     }
 
     @Override
-    public void finishMov() {
+    public void finishMov(double oilLiters, double gasLiters) {
+        gasTankBar -= gasLiters;
+        oilTankBar -= oilLiters;
+
         System.out.println("Автомобиль " + getBrand() + "закончил движение");
 
     }
@@ -52,6 +61,10 @@ public class Car extends Transport<DriverB> {
         int maxSpeed = (int) (minBound + (maxBound - minBound) * Math.random());
         System.out.println("Максимальная скорость для автомобиля" + maxSpeed);
 
+    }
+    @Override
+    public void runDiagnostic() {
+        System.out.println("Диагностика пройдена  " + getBrand() + getModel());
     }
 
     enum BodyType {

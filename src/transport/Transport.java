@@ -1,6 +1,6 @@
 package transport;
 
-public abstract class Transport<T extends Driver> implements Сompeting {
+public abstract class Transport<T extends Driver> implements Сompeting, Diagnosticable{
     static String defaultBrand = "default";
     static String defaultModel = "default";
     private static double defaultEngineVolume = 1.5;
@@ -9,6 +9,8 @@ public abstract class Transport<T extends Driver> implements Сompeting {
     private final String model;
     private double engineVolume;
     private T driver;
+    protected int gasTankBar;
+    protected int oilTankBar;
 
     public Transport(String brand, String model, double engineVolume, T driver) {
         this.brand = (isBrandEmpty(brand) ? defaultBrand : brand);
@@ -61,8 +63,10 @@ public abstract class Transport<T extends Driver> implements Сompeting {
 
     public abstract void startMov();
 
-    public abstract void finishMov();
-public abstract Type getType();
+    public abstract Type getType();
+
+    public abstract void finishMov(double oilLiters, double gasLiters);
+
     @Override
     public String toString() {
         return "Марка " + brand +
@@ -70,4 +74,13 @@ public abstract Type getType();
                 ", Объем двигателя " + engineVolume + "," + driver;
 
     }
+
+    public void refuel(double liters) {
+        gasTankBar += liters;
+    }
+
+    public void addOil(double liters) {
+        gasTankBar += liters;
+    }
+
 }
