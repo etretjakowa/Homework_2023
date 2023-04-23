@@ -1,13 +1,14 @@
 package transport;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DiagnosticNotAllowedException {
 
         DriverB driverB1 = new DriverB("1 категории B", true, 2);
         Car carLada = new Car("Lada", "Granta", 1.7, driverB1, Car.BodyType.SEDAN);
         carLada.printInfo();
         System.out.println(carLada);
         carLada.getType();
+        carLada.runDiagnostic();
         System.out.println();
 
         DriverB driverB2 = new DriverB("2 категории B", true, 1);
@@ -15,6 +16,7 @@ public class Main {
         carAudi.printInfo();
         System.out.println(carAudi);
         carAudi.getType();
+        carAudi.runDiagnostic();
         System.out.println();
 
         DriverB driverB3 = new DriverB("3 категории B", true, 1);
@@ -22,6 +24,7 @@ public class Main {
         carBMW.printInfo();
         System.out.println(carBMW);
         carBMW.getType();
+        carBMW.runDiagnostic();
         System.out.println();
 
         DriverB driverB4 = new DriverB("4 категории B", true, 1);
@@ -29,6 +32,7 @@ public class Main {
         carKia.printInfo();
         System.out.println(carKia);
         carKia.getType();
+        carKia.runDiagnostic();
         System.out.println();
 
 
@@ -37,6 +41,7 @@ public class Main {
         bus1.printInfo();
         System.out.println(bus1);
         bus1.getType();
+        bus1.runDiagnostic();
         System.out.println();
 
         DriverD driverD2 = new DriverD("2 категории D", true, 3);
@@ -44,6 +49,7 @@ public class Main {
         bus2.printInfo();
         System.out.println(bus2);
         bus2.getType();
+        bus2.runDiagnostic();
         System.out.println();
 
         DriverD driverD3 = new DriverD("3 категории D", true, 5);
@@ -51,6 +57,7 @@ public class Main {
         bus3.printInfo();
         System.out.println(bus3);
         bus3.getType();
+        bus3.runDiagnostic();
         System.out.println();
 
         DriverD driverD4 = new DriverD("4 категории D", true, 4);
@@ -58,6 +65,7 @@ public class Main {
         bus4.printInfo();
         System.out.println(bus4);
         bus4.getType();
+        bus4.runDiagnostic();
         System.out.println();
 
         DriverC driverC1 = new DriverC("1 категории C", true, 4);
@@ -69,24 +77,48 @@ public class Main {
         truck1.printInfo();
         System.out.println(truck1);
         truck1.getType();
+        truck1.runDiagnostic();
         System.out.println();
 
         Truck truck2 = new Truck("МАЗ", "2", 9.0, driverC2, Truck.LoadCapacity.N2);
         truck2.printInfo();
         System.out.println(truck2);
         truck2.getType();
+        truck2.runDiagnostic();
         System.out.println();
 
         Truck truck3 = new Truck("ГАЗ", "1", 6.5, driverC3, Truck.LoadCapacity.N3);
         truck3.printInfo();
         System.out.println(truck3);
         truck3.getType();
+        truck3.runDiagnostic();
         System.out.println();
 
         Truck truck4 = new Truck("ТОНАР", "1", 9.8, driverC4, Truck.LoadCapacity.getValue(5));
         truck4.printInfo();
         System.out.println(truck4);
         truck4.getType();
+        truck4.runDiagnostic();
         System.out.println();
+
+        Transport[] transports = new Transport[] {
+                carLada, carAudi, carBMW, carKia,
+                bus1, bus2, bus3, bus4,
+                truck1, truck2, truck3, truck4
+        };
+        for (Transport transport : transports) {
+            try {
+                transport.startMov();
+            } catch (EmptyGasTankException e) {
+                System.out.println(e.reason());
+            } catch (NoOilException e) {
+                System.out.println(e.reason());
+            }
+            try {
+                transport.runDiagnostic();
+            } catch (DiagnosticNotAllowedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

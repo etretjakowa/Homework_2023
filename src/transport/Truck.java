@@ -12,6 +12,11 @@ public class Truck extends Transport<DriverC> {
         return truck;
     }
 
+    @Override
+    public void runDiagnostic() {
+        System.out.println("Диагностика пройдена " + getBrand() + " " + getModel());
+    }
+
     public enum LoadCapacity {
         N1(0, 3.5),
         N2(3.5, 12),
@@ -58,11 +63,19 @@ public class Truck extends Transport<DriverC> {
 
     @Override
     public void startMov() {
+        if (gasTankBar <= 0) {
+            throw new EmptyGasTankException(this);
+        }
+        if (oilTankBar <= 0) {
+            throw new NoOilException(this);
+        }
         System.out.println("Грузовик " + getBrand() + "начал движение");
     }
 
     @Override
-    public void finishMov() {
+    public void finishMov(double oilLiters, double gasLiters) {
+        gasTankBar -= gasLiters;
+        oilTankBar -= oilLiters;
         System.out.println("Грузовик " + getBrand() + "закончил движение");
 
     }
