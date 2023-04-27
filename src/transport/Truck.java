@@ -3,8 +3,8 @@ package transport;
 public class Truck extends Transport<DriverC> {
     private LoadCapacity truck;
 
-    public Truck(String brand, String model, double engineVolume, DriverC driver, LoadCapacity truck) {
-        super(brand, model, engineVolume, driver);
+    public Truck(String brand, String model, double engineVolume, DriverC driver, LoadCapacity truck, Mechanic mechanic) {
+        super(brand, model, engineVolume, driver, mechanic);
         this.truck = truck;
     }
 
