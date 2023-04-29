@@ -9,20 +9,21 @@ public class ServiceStation {
         this.transportQueue = transportQueue;
     }
 
-    public void addCarYoQueue(Transport transport) {
-        if (transport.checkTransportNeedSTO()) {
+    public void addCarinQueue(Transport transport) {
+        if (transport instanceof Bus) {
+            System.out.println("Автобусы не нуждаются в техобслуживании перед заездом");
+        } else {
             transportQueue.add(transport);
         }
+
     }
 
-    public void carryOutAVehicleInspection(Queue<Transport> transportQueue) {
+            public void carryOutAVehIcleInspection() {
         if (transportQueue.isEmpty()) {
-            System.out.println("У данного транспортного средства нет механиков");
+            System.out.println(" нет авто в очереди");
         } else {
-            for (int i = 0; i < transportQueue.size(); i++ ) {
-                Mechanic mechanic = (Mechanic) transportQueue.poll().getMechanic();
-                mechanic.maintenance();
-            }
+            System.out.println(" обслуживаем " + transportQueue.poll().getBrand());
+
         }
     }
 }

@@ -1,11 +1,13 @@
 package transport;
 
+import java.util.List;
+
 public class Car extends Transport<DriverB> {
 
     private BodyType bodyType;
 
-    public Car(String brand, String model, double engineVolume, DriverB driver, BodyType bodyType,Mechanic mechanic) {
-        super(brand, model, engineVolume, driver, mechanic);
+    public Car(String brand, String model, double engineVolume, DriverB driver, BodyType bodyType, List<Mechanic> mechanics) {
+        super(brand, model, engineVolume, driver, mechanics);
         this.bodyType = bodyType;
     }
 

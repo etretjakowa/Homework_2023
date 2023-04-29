@@ -36,7 +36,7 @@ public class Mechanic {
 
     @Override
     public String toString() {
-        return ", Механик №" +
+        return "Механик " +
                  nameMechanic + " работает в компании №" +  company;
     }
 }
