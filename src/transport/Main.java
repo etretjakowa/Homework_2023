@@ -20,6 +20,7 @@ public class Main {
 
         DriverB driverB1 = new DriverB("1 категории B", true, 2);
         Car carLada = new Car("Lada", "Granta", 1.7, driverB1, Car.BodyType.SEDAN, mechanics);
+        mechanic3.fixACar();
 //        carLada.printInfo();
 //        carLada.printMechanics();
 //        System.out.println(carLada);
@@ -104,7 +105,7 @@ public class Main {
         DriverC driverC4 = new DriverC("4 категории C", true, 4);
 
 
-        Truck truck1 = new Truck("Камаз", "1", 8.0, driverC1, Truck.LoadCapacity.getValue(10), mechanics);
+        Truck truck1 = new Truck("Камаз", "1", 8.0, driverC1, Truck.LoadCapacity.N3, mechanics);
 //        truck1.printInfo();
 //        System.out.println(truck1);
 //        truck1.getType();
@@ -113,7 +114,7 @@ public class Main {
         serviceStation.addCarinQueue(truck1);
 
 
-        Truck truck2 = new Truck("МАЗ", "2", 9.0, driverC2, Truck.LoadCapacity.N2, mechanics);
+        Truck truck2 = new Truck("МАЗ", "2", 9.0, driverC2, Truck.LoadCapacity.N1, mechanics);
 //        truck2.printInfo();
 //        System.out.println(truck2);
 //        truck2.getType();
@@ -129,7 +130,7 @@ public class Main {
 //        System.out.println();
         serviceStation.addCarinQueue(truck3);
 
-        Truck truck4 = new Truck("ТОНАР", "1", 9.8, driverC4, Truck.LoadCapacity.getValue(5), mechanics);
+        Truck truck4 = new Truck("ТОНАР", "1", 9.8, driverC4, Truck.LoadCapacity.N1, mechanics);
 //        truck4.printInfo();
 //        System.out.println(truck4);
 //        truck4.getType();
@@ -148,6 +149,7 @@ public class Main {
         serviceStation.carryOutAVehIcleInspection();
         serviceStation.carryOutAVehIcleInspection();
         serviceStation.carryOutAVehIcleInspection();
+
 
         System.out.println(mechanics);
 

@@ -21,8 +21,9 @@ public class ServiceStation {
             public void carryOutAVehIcleInspection() {
         if (transportQueue.isEmpty()) {
             System.out.println(" нет авто в очереди");
-        } else {
-            System.out.println(" обслуживаем " + transportQueue.poll().getBrand());
+        } else {Transport transport = transportQueue.poll();
+            System.out.println(" обслуживаем "+ transport.getBrand()+ " " + transport.getModel());
+
 
         }
     }
