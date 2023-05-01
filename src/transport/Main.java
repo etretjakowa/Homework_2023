@@ -4,9 +4,16 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws DiagnosticNotAllowedException {
-
         Queue<Transport> transportQueue = new LinkedList<>();
         ServiceStation serviceStation = new ServiceStation(transportQueue);
+
+        Map<Transport, List<Mechanic>> map = new HashMap<>();
+        List<Transport> transports = new ArrayList<>();
+
+
+        for (Transport transport : transports) {
+            map.put( transport, transport.getMechanics());
+        }
 
         List<Mechanic> mechanics = new ArrayList<>();
         Mechanic mechanic1 = new Mechanic("Иван", "1");
@@ -18,9 +25,11 @@ public class Main {
         mechanics.add(mechanic3);
         mechanics.add(mechanic4);
 
+
         DriverB driverB1 = new DriverB("1 категории B", true, 2);
         Car carLada = new Car("Lada", "Granta", 1.7, driverB1, Car.BodyType.SEDAN, mechanics);
         mechanic3.fixACar();
+        transports.add(carLada);
 //        carLada.printInfo();
 //        carLada.printMechanics();
 //        System.out.println(carLada);
@@ -34,6 +43,7 @@ public class Main {
 
         DriverB driverB2 = new DriverB("2 категории B", true, 1);
         Car carAudi = new Car("Audi", "A8 50 L TDI quattro", 1.5, driverB2, Car.BodyType.SEDAN, mechanics);
+        transports.add(carAudi);
 //        carAudi.printInfo();
 //        System.out.println(carAudi);
 //        carAudi.getType();

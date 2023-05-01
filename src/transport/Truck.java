@@ -1,6 +1,7 @@
 package transport;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Truck extends Transport<DriverC> {
     private LoadCapacity truck;
@@ -110,5 +111,19 @@ public class Truck extends Transport<DriverC> {
         int maxSpeed = (int) (minBound + (maxBound - minBound) * Math.random());
         System.out.println("Максимальная скорость для грузовика" + maxSpeed);
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Truck truck1 = (Truck) o;
+        return truck == truck1.truck;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), truck);
     }
 }
