@@ -4,15 +4,15 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws DiagnosticNotAllowedException {
-        Queue<Transport> transportQueue = new LinkedList<>();
-        ServiceStation serviceStation = new ServiceStation(transportQueue);
+//        Queue<Transport> transportQueue = new LinkedList<>();
+//        ServiceStation serviceStation = new ServiceStation(transportQueue);
 
         Map<Transport, List<Mechanic>> map = new HashMap<>();
         List<Transport> transports = new ArrayList<>();
 
 
         for (Transport transport : transports) {
-            map.put( transport, transport.getMechanics());
+            map.put(transport, transport.getMechanics());
         }
 
         List<Mechanic> mechanics = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Main {
 
         DriverB driverB1 = new DriverB("1 категории B", true, 2);
         Car carLada = new Car("Lada", "Granta", 1.7, driverB1, Car.BodyType.SEDAN, mechanics);
-        mechanic3.fixACar();
+//        mechanic3.fixACar();
         transports.add(carLada);
 //        carLada.printInfo();
 //        carLada.printMechanics();
@@ -53,7 +53,7 @@ public class Main {
 
         DriverB driverB3 = new DriverB("3 категории B", true, 1);
         Car carBMW = new Car("BMW", "Z8", 3.0, driverB3, Car.BodyType.STATION_WAGON, mechanics);
-
+        transports.add(carBMW);
 //        carBMW.printInfo();
 //        System.out.println(carBMW);
 //        carBMW.getType();
@@ -67,11 +67,11 @@ public class Main {
 //        carKia.getType();
 //        carKia.runDiagnostic();
 //        System.out.println();
-
-        serviceStation.addCarinQueue(carLada);
-        serviceStation.addCarinQueue(carAudi);
-        serviceStation.addCarinQueue(carBMW);
-        serviceStation.addCarinQueue(carKia);
+//
+//        serviceStation.addCarinQueue(carLada);
+//        serviceStation.addCarinQueue(carAudi);
+//        serviceStation.addCarinQueue(carBMW);
+//        serviceStation.addCarinQueue(carKia);
 
 //
 //
@@ -90,7 +90,7 @@ public class Main {
 //        bus2.getType();
 //        bus2.runDiagnostic();
 //        System.out.println();
-        serviceStation.addCarinQueue(bus2);
+//        serviceStation.addCarinQueue(bus2);
 
 
         DriverD driverD3 = new DriverD("3 категории D", true, 5);
@@ -108,7 +108,7 @@ public class Main {
 //        bus4.getType();
 //        bus4.runDiagnostic();
 //        System.out.println();
-        serviceStation.addCarinQueue(bus4);
+//        serviceStation.addCarinQueue(bus4);
         DriverC driverC1 = new DriverC("1 категории C", true, 4);
         DriverC driverC2 = new DriverC("2 категории C", true, 4);
         DriverC driverC3 = new DriverC("3 категории C", true, 4);
@@ -121,7 +121,7 @@ public class Main {
 //        truck1.getType();
 //        truck1.runDiagnostic();
 //        System.out.println();
-        serviceStation.addCarinQueue(truck1);
+//        serviceStation.addCarinQueue(truck1);
 
 
         Truck truck2 = new Truck("МАЗ", "2", 9.0, driverC2, Truck.LoadCapacity.N1, mechanics);
@@ -130,7 +130,7 @@ public class Main {
 //        truck2.getType();
 //        truck2.runDiagnostic();
 //        System.out.println();
-        serviceStation.addCarinQueue(truck2);
+//        serviceStation.addCarinQueue(truck2);
 
         Truck truck3 = new Truck("ГАЗ", "1", 6.5, driverC3, Truck.LoadCapacity.N3, mechanics);
 //        truck3.printInfo();
@@ -138,7 +138,7 @@ public class Main {
 //        truck3.getType();
 //        truck3.runDiagnostic();
 //        System.out.println();
-        serviceStation.addCarinQueue(truck3);
+//        serviceStation.addCarinQueue(truck3);
 
         Truck truck4 = new Truck("ТОНАР", "1", 9.8, driverC4, Truck.LoadCapacity.N1, mechanics);
 //        truck4.printInfo();
@@ -146,22 +146,23 @@ public class Main {
 //        truck4.getType();
 //        truck4.runDiagnostic();
 //        System.out.println();
-        serviceStation.addCarinQueue(truck4);
-
-        serviceStation.carryOutAVehIcleInspection();
-        serviceStation.carryOutAVehIcleInspection();
-        serviceStation.carryOutAVehIcleInspection();
-        serviceStation.carryOutAVehIcleInspection();
-        serviceStation.carryOutAVehIcleInspection();
-        serviceStation.carryOutAVehIcleInspection();
-        serviceStation.carryOutAVehIcleInspection();
-        serviceStation.carryOutAVehIcleInspection();
-        serviceStation.carryOutAVehIcleInspection();
-        serviceStation.carryOutAVehIcleInspection();
-        serviceStation.carryOutAVehIcleInspection();
+//        serviceStation.addCarinQueue(truck4);
+//
+//        serviceStation.carryOutAVehIcleInspection();
+//        serviceStation.carryOutAVehIcleInspection();
+//        serviceStation.carryOutAVehIcleInspection();
+//        serviceStation.carryOutAVehIcleInspection();
+//        serviceStation.carryOutAVehIcleInspection();
+//        serviceStation.carryOutAVehIcleInspection();
+//        serviceStation.carryOutAVehIcleInspection();
+//        serviceStation.carryOutAVehIcleInspection();
+//        serviceStation.carryOutAVehIcleInspection();
+//        serviceStation.carryOutAVehIcleInspection();
+//        serviceStation.carryOutAVehIcleInspection();
 
 
         System.out.println(mechanics);
+        System.out.println(map);
 
 //        Transport[] transports = new Transport[] {
 //                carLada, carAudi, carBMW, carKia,
