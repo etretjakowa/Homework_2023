@@ -76,6 +76,10 @@ public class Main {
         }
 
         System.out.println(map);
+        for (Map.Entry<Transport, List<Mechanic>> transport: map.entrySet()) {
+            System.out.println(transport.getKey() + "-" + transport.getValue());
+        }
+    }
 
 //        Transport[] transports = new Transport[] {
 //                carLada, carAudi, carBMW, carKia,
@@ -97,4 +101,3 @@ public class Main {
 //            }
 //        }
     }
-}
