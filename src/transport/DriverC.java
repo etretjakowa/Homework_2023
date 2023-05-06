@@ -20,4 +20,13 @@ public class DriverC extends Driver{
         System.out.println("Водитль категории C " + getName() + "заправил грузовик");
     }
 
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }
