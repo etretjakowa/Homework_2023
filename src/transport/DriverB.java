@@ -19,4 +19,38 @@ public class DriverB extends Driver {
     public void refuelTransport() {
         System.out.println("Водитль категории B " + getName() + "заправил автомобиль");
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
